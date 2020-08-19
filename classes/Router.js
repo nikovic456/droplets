@@ -1,5 +1,7 @@
-var UserController = require('../controllers/UserController');
-var createError = require('http-errors');
+var UserController = require('../controllers/UserController'); 
+var ChannelController = require('../controllers/ChannelController');
+    var UserController = require('../controllers/UserController'); 
+    var ChannelController = require('../controllers/ChannelController');
 
 /**
  * Router class to add controller routes to Express
@@ -47,6 +49,7 @@ class Router{
      */
     addControllers() {
         var userController = new UserController();
+        var channelController = new ChannelController();
     }
 
     // Renders home page ./views/index.ejs
