@@ -1,16 +1,6 @@
-<head>
-    <title>droplets</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/2ea5bc6e34.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <!--- li class="nav-item">
-      <ul 
-    </li --->
-  </head>
-        <div id="login">
+<%- include('partials/header'); %> 
+
+        <div id="register">
             <div class="container">
                 <div id="login-row" class="row justify-content-center align-items-center">
                     <div id="login-column" class="col-md-6">
@@ -23,12 +13,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="text" name="password" id="password" class="form-control">
+                                    <input type="password" name="password" id="password" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="password comfim" class="text-info">Password comfirm:</label><br>
-                                    <input type="text" name="passwordConfirm" id="password comfirm" class="form-control">
+                                    <input type="password" name="passwordConfirm" id="password comfirm" class="form-control">
                                 </div>
+                                <% if (locals.errors && locals.errors.register) { %>
+                                    <% locals.errors.register.forEach(function(error) { %>
+                                        <p class="alert alert-primary" role="alert"><%= error %></p>
+                                    <% }) %>
+                                <% } %>
                                 <div class="form-group">
                                     <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                                 </div>

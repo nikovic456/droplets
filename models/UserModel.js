@@ -180,6 +180,7 @@ class UserModel{
             // Validation failed, so return errors
             throw new Error(errors);
         } else {
+            console.log(request.files);
             // If form includes new avatar, upload this
             if (request.files) {
                 upDatedUser.photoURL = this.updateAvatar(request, response);

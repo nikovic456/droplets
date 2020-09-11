@@ -1,0 +1,37 @@
+<%- include('partials/header'); %> 
+<% var users = locals.channels.users %>
+	<% if (users) { %>
+		<% users.forEach(function(user) { %>
+			<div class="form-group">
+				<div id="add-channel">
+					<div class="container">
+						<div id="login-row" class="row justify-content-center align-items-center">
+							<div id="login-column" class="col-md-6">
+								<div id="login-box" class="col-md-12">
+										<h3 class="text-center text-info">new channel</h3>
+										<div class="form-group">
+											<label for="displayName" class="text-info">diplay name</label>
+											<input type="text" class="form-control" name="name" placeholder="Display Name" value="">
+										</div>
+										<div class="form-group">
+											<div class="custom-file">
+											<label for="avatar" class="text-info">chat image</label>
+												<input type="file" name="avatar" class="custom-file-input" id="customFile">
+												<label class="custom-file-label" for="customFile">Chat image</label>
+											  </div>
+											  <div class="form-group">
+												<label for="email" class="text-info">Email:</label><br>
+												<input type="email" name="email" id="email" class="form-control">
+											</div>
+											<div class="form-group">
+												<input id="update" type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+											</div>
+											</div>	
+										</div>
+										
+
+		<% }) %>
+	<% } %>
+</form>
+<%- include('partials/footer'); %>
+    

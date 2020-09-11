@@ -119,12 +119,12 @@ class UserController{
                 }).catch((error) => {
                     // Firebase registration has failed, so return Firebase errors
                     request.session.errors.register = [error.message];
-                    response.redirect('/');
+                    response.redirect('/register');
                 });
         } catch(errors) {
             // Form has failed validation, so return errors
             request.session.errors.register = errors;
-            response.redirect('/');
+            response.redirect('/register');
         }
     };
 
@@ -138,7 +138,7 @@ class UserController{
                 await AraDTUserModel.update(request, response)
                     .then(() => {
                         response.locals.errors.profile = ['Your details have been updated'];
-                        response.render('account');
+                        response.render('home');
                     }).catch((error) => {
                         response.locals.errors.profile = [error.message];
                         response.render('account');
