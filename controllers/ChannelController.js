@@ -49,7 +49,7 @@ class ChannelController{
     fetchChannels = async (request, response, next) => {
         
         if (!request.session.token) {
-           response.redirect('/');
+           response.redirect('');
         }
         
         try{
@@ -84,16 +84,17 @@ class ChannelController{
         if (AraDTValidator.isEmpty(request.body.name)) {
             errors.general = ['You need to add a channel name'];
             response.redirect('/channels');
+        } else {
+            await AraDTChannelModel.addChannel(request, response)
+                .then(() => {
+                    errors.general = ['Your channel has been created'];
+                    response.redirect('/channels');
+                })
+                .catch((error) => {
+                    errors.general = [error.message];
+                    response.redirect('/channels');
+                });
         }
-        await AraDTChannelModel.addChannel(request, response)
-            .then(() => {
-                errors.general = ['Your channel has been created'];
-                response.redirect('/channels');
-            })
-            .catch((error) => {
-                errors.general = [error.message];
-                response.redirect('/channels');
-            });
     };
 
     /**

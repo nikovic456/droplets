@@ -8,7 +8,10 @@ body {
   background: rgba(0, 0, 0, 0) url('/images/login.jpg') repeat fixed center center / cover ;
   height: 100%; 
 }
-
+ body {
+  background: rgba(0, 0, 0, 0) url('/images/login.jpg') repeat fixed center center / cover ;
+  height: 100%;
+}
 #login {
   background: rgba(0, 0, 0, 0) url('/images/login.jpg') repeat fixed center center / cover ;
   height: 100%;
@@ -211,3 +214,4 @@ img{ max-width:100%;}
   background-color: #fff !important;
   border-color: #fff !importants;
 }
+

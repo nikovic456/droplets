@@ -1,37 +1,42 @@
+<%
+var channelErrors = locals.errors.channels;
+var generalErrors = ("general" in channelErrors) ? channelErrors.general : false ;  
+%>
 <%- include('partials/header'); %> 
-<% var users = locals.channels.users %>
-	<% if (users) { %>
-		<% users.forEach(function(user) { %>
-			<div class="form-group">
-				<div id="add-channel">
-					<div class="container">
-						<div id="login-row" class="row justify-content-center align-items-center">
-							<div id="login-column" class="col-md-6">
-								<div id="login-box" class="col-md-12">
-										<h3 class="text-center text-info">new channel</h3>
-										<div class="form-group">
-											<label for="displayName" class="text-info">diplay name</label>
-											<input type="text" class="form-control" name="name" placeholder="Display Name" value="">
-										</div>
-										<div class="form-group">
-											<div class="custom-file">
-											<label for="avatar" class="text-info">chat image</label>
-												<input type="file" name="avatar" class="custom-file-input" id="customFile">
-												<label class="custom-file-label" for="customFile">Chat image</label>
-											  </div>
-											  <div class="form-group">
-												<label for="email" class="text-info">Email:</label><br>
-												<input type="email" name="email" id="email" class="form-control">
-											</div>
-											<div class="form-group">
-												<input id="update" type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-											</div>
-											</div>	
-										</div>
-										
+<div id="add-chnnel">
+	<div class="container">
+		<div id="login-row" class="row justify-content-center align-items-center">
+			<div id="login-column" class="col-md-6">
+				<div id="login-box" class="col-md-12">
+					<h3 class="text-center text-info">new channel</h3>
+					<% var users = locals.channels.users %>
+					<form id="channel-create-form" action="/channels/add" method="post" enctype="multipart/form-data"class="text-info">channel name</label>
+						<input type="text" class="form-control" name="name" placeholder="channel Name" value="">
+						<div class="form-group">
+							<label for="avatar" class="text-info">Avatar</label><br>
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" name="avatar" id="customFile">
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							  </div>
+						</div>
+						<p><img src="<%= locals.user.photoURL %>" alt=""></p>
+						<% if (users) { %>
+							<% users.forEach(function(user) { %>
+								<input class="user-check-input" id="user<%= user.id %>" type="checkbox" name="users" value="<%= user.id %>"class="text-info"> add user</label>
+								<p><%= user.name %></p>
+							<% }) %>
+						<% } %>
 
-		<% }) %>
-	<% } %>
+						<% if (generalErrors) { %>
+							<% generalErrors.forEach(function(error) { %>
+								<p class="alert alert-primary" role="alert"><%= error %></p>
+							<% }) %>
+						<% } %>
+						<div class="form-group">    
+							<input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+						</div>
+					</form>
+						  
 </form>
 <%- include('partials/footer'); %>
     
